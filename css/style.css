@@ -1,0 +1,16 @@
+body{
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.thumb {
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.description {
+  height: 200px;
+  overflow-y: auto;
+}

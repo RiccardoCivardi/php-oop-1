@@ -5,9 +5,9 @@ class Movie {
   public $title;
   public $release_date;
   public $vote_average;
+  public $genre;
   public $description;
   public $poster;
-  public $genre;
 
   public static $type = 'movie';
 
@@ -16,28 +16,47 @@ class Movie {
    * @param String movie title
    * @param String movie release date
    * @param Number movie vote average
-   * @param String movie description
-   * @param Genre movie genre
    */
-  public function __construct($_title, $_release_date, $_vote_average, $_description = null, Genre $_genre = null){
+  public function __construct($_title, $_release_date, $_vote_average , $_genre , $_description , $_poster ){
 
     $this->title = $_title;
     $this->release_date = $_release_date;
     $this->vote_average = $_vote_average;
-    $this->description = $_description;
     $this->genre = $_genre;
+    $this->description = $_description;
+    $this->poster = $_poster; 
 
   }
 
   public function setPoster($_poster_path){
 
-    $this->poster = $_poster_path;
+    $this->poster = trim($_poster_path);
 
   }
 
-  // public function getPoster(){
+  public function getPoster(){
 
-  // }
+    $placeholder = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png';
+
+    if($this->poster){
+      return $this->poster;
+    }
+
+    return $placeholder;
+
+  }
+
+  public function addGenre($_genre){
+
+    $_genre = ucfirst(trim($_genre)); 
+    
+    if(!isset($this->genre)){
+      $this->genre = $_genre;
+    } else {
+      $this->genre .= ", $_genre";
+      
+    }
+  }
 
 
 
